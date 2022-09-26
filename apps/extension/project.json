@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/extension",
         "index": "apps/extension/src/index.html",
@@ -18,7 +20,9 @@
           "apps/extension/src/assets",
           "apps/extension/src/manifest.json"
         ],
-        "styles": ["apps/extension/src/styles.scss"],
+        "styles": [
+          "apps/extension/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/extension"],
+      "outputs": [
+        "coverage/apps/extension"
+      ],
       "options": {
         "jestConfig": "apps/extension/jest.config.ts",
         "passWithNoTests": true

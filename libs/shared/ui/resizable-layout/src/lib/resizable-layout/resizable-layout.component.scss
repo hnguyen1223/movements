@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  height: 100%;
+
+  #dragHandler {
+    cursor: col-resize;
+    width: 2px;
+    background-color: lightgrey;
+    opacity: 50%;
+  }
+}

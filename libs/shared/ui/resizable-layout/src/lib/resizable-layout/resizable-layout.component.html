@@ -1,0 +1,8 @@
+<ng-content select="[resizableLayoutLeft]"></ng-content>
+<div
+  id="dragHandler"
+  (mousedown)="onMouseDown($event)"
+  (document:mouseup)="isMouseDown ? onMouseUp() : 1"
+  (document:mousemove)="isMouseDown ? onMouseMove($event) : 1"
+></div>
+<ng-content select="[resizableLayoutRight]"></ng-content>
