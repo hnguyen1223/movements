@@ -9,9 +9,6 @@ Main components
 * Browser Extension - Visual tool to create custom mapping from list-like website to feed
 * Backend - load feed, scrap websites from custom mapping
 
-## Demo
-work in progress - [movements.huynguyen.ca](https://movements.huynguyen.ca)
-
 ## Inspirations
 This is both a personal project that addresses some of my needs and a testing ground for Nx architecture with monorepo to solve some problems with more complex projects e.g. code duplication, circular dependencies, growing shared module and mental overhead to manage all of those.
 
@@ -60,6 +57,7 @@ This is both a personal project that addresses some of my needs and a testing gr
 - No importing library if it's being lazy loaded
 
 ## Progress
+work in progress - [movements.huynguyen.ca](https://movements.huynguyen.ca)
 
 ### Web App 
 - [x] Overall Structure
@@ -67,13 +65,13 @@ This is both a personal project that addresses some of my needs and a testing gr
 - [x] Persistence - localstorage
 - [ ] Persistence - Firestore
 - [ ] Different feed fiew
-- [ ] Feed - Atom support
+- [x] Feed - Atom support
 - [ ] Error checking (feed format, url, etc.)
 
 ### Backend
 - [x] Feed  - RSS
 - [ ] Error checking (feed format, url, etc.)
-- [ ] Feed - Atom
+- [x] Feed - Atom
 - [ ] Feed - custom mapping (JSDOM)
 - [ ] Feed - custom mapping (puppeteer)
 - [ ] Custom NX plugin to support firebase functions in nx
