@@ -99,6 +99,16 @@
         "jestConfig": "apps/web/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "web:build:production",
+        "firebaseProject": "movements-1223",
+        "firebaseHostingSite": "movements-1223"
+      }
     }
   },
   "tags": []

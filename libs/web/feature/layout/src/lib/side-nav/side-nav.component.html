@@ -1,22 +1,35 @@
 <ul nz-menu nzMode="inline">
   <li nz-menu-item nzMatchRouter>
-    <a [routerLink]="['/', 'components', 'menu', 'en']">Saved</a>
+    <a routerLink="feed/all">All</a>
   </li>
 
   <li nz-submenu nzTitle="Feeds" nzIcon="mail" nzOpen>
     <ul>
-      <li nz-menu-group nzTitle="Favorites">
+      <li
+        nz-menu-group
+        nzTitle="Favorites"
+        *ngIf="favorites$ | async as favorites"
+      >
         <ul>
-          <li nz-menu-item nzSelected>Option 1</li>
-          <li nz-menu-item>Option 2</li>
+          <li nz-menu-item *ngFor="let feed of favorites; trackBy: trackByFn">
+            <a
+              [routerLink]="['/', 'feed', feed.id | uriEncode]"
+              [innerHtml]="feed.title"
+            ></a>
+          </li>
         </ul>
       </li>
-      <li nz-menu-group nzTitle="Others">
+      <li nz-menu-group nzTitle="Others" *ngIf="others$ | async as others">
         <ul>
-          <li nz-menu-item>Option 3</li>
-          <li nz-menu-item>Option 4</li>
+          <li nz-menu-item *ngFor="let feed of others; trackBy: trackByFn">
+            <a
+              [routerLink]="['/', 'feed', feed.id | uriEncode]"
+              [innerHtml]="feed.title"
+            ></a>
+          </li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
+<movements-side-nav-bottom></movements-side-nav-bottom>

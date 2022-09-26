@@ -1,4 +1,4 @@
-import { FactoryProvider, Inject, Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { AppConfig, APP_CONFIG } from '@movements/shared/util/app-config';
 
 @Injectable({
@@ -31,12 +31,3 @@ export class PersistenceService {
     localStorage.removeItem(this.prefix + key);
   }
 }
-
-const persistenceServiceFactory = (appConfig: AppConfig) =>
-  new PersistenceService(appConfig);
-
-export const persistenceServiceProvider: FactoryProvider = {
-  provide: PersistenceService,
-  useFactory: persistenceServiceFactory,
-  deps: [APP_CONFIG],
-};

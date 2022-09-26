@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "movements-1223"
+  },
+  "targets": {
+    "movements-1223": {
+      "hosting": {
+        "web": [
+          "movements-1223"
+        ]
+      }
+    }
   }
 }
