@@ -8,6 +8,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { RouterModule } from '@angular/router';
 import { ResizableLayoutModule } from '@movements/shared/ui/resizable-layout';
+import { SideNavBottomComponent } from './side-nav-bottom/side-nav-bottom.component';
+import { UriEncodeModule } from '@movements/shared/util/uri-encode';
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import { ResizableLayoutModule } from '@movements/shared/ui/resizable-layout';
     RouterModule,
     NzIconModule,
     ResizableLayoutModule,
+    UriEncodeModule,
   ],
-  declarations: [LayoutComponent, SideNavComponent],
+  declarations: [LayoutComponent, SideNavComponent, SideNavBottomComponent],
 })
 export class WebFeatureLayoutModule {}

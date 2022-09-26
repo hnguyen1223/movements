@@ -1,4 +1,4 @@
-import { FactoryProvider, Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { PersistenceService } from '@movements/shared/data-access/persistence';
 import { DEFAULT_SETTINGS, Settings } from './settings';
 
@@ -39,12 +39,3 @@ export class SettingsService {
     return this.settings[key];
   }
 }
-
-const settingsServiceFactory = (persistenceService: PersistenceService) =>
-  new SettingsService(persistenceService);
-
-export const settingsServiceProvider: FactoryProvider = {
-  provide: SettingsService,
-  useFactory: settingsServiceFactory,
-  deps: [PersistenceService],
-};

@@ -4,9 +4,11 @@
   "projects": {
     "extension": "apps/extension",
     "extension-e2e": "apps/extension-e2e",
+    "shared-data-access-feed": "libs/shared/data-access/feed",
     "shared-data-access-persistence": "libs/shared/data-access/persistence",
     "shared-ui-resizable-layout": "libs/shared/ui/resizable-layout",
     "shared-util-app-config": "libs/shared/util/app-config",
+    "shared-util-uri-encode": "libs/shared/util/uri-encode",
     "web": "apps/web",
     "web-data-access-settings": "libs/web/data-access/settings",
     "web-e2e": "apps/web-e2e",

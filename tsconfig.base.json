@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@movements/shared/data-access/feed": [
+        "libs/shared/data-access/feed/src/index.ts"
+      ],
       "@movements/shared/data-access/persistence": [
         "libs/shared/data-access/persistence/src/index.ts"
       ],
@@ -23,6 +26,9 @@
       ],
       "@movements/shared/util/app-config": [
         "libs/shared/util/app-config/src/index.ts"
+      ],
+      "@movements/shared/util/uri-encode": [
+        "libs/shared/util/uri-encode/src/index.ts"
       ],
       "@movements/web/data-access/settings": [
         "libs/web/data-access/settings/src/index.ts"

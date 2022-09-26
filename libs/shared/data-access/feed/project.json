@@ -1,16 +1,16 @@
 {
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/web/data-access/settings/src",
+  "sourceRoot": "libs/shared/data-access/feed/src",
   "prefix": "movements",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/web/data-access/settings"
+        "coverage/libs/shared/data-access/feed"
       ],
       "options": {
-        "jestConfig": "libs/web/data-access/settings/jest.config.ts",
+        "jestConfig": "libs/shared/data-access/feed/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,8 +18,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/web/data-access/settings/**/*.ts",
-          "libs/web/data-access/settings/**/*.html"
+          "libs/shared/data-access/feed/**/*.ts",
+          "libs/shared/data-access/feed/**/*.html"
         ]
       }
     }
