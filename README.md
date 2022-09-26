@@ -24,26 +24,26 @@ This is both a personal project that addresses some of my needs and a testing gr
 ## Project Structure
 ```
 └── root
-	  ├── apps                    // bootsrapping, logics have been moved to libs
+    ├── apps                    // bootsrapping, logics have been moved to libs
     │   ├── web
     │   ├── extension
     │   ├── backend
     └── libs
-	      ├── web                 // app-specific
-	      │	  ├── feature         // use cases, smart components
-        │	  │   ├── shell       // feature-shell to contain overall app routing
-        │	  │   ├── layout      // main layout
-        │	  │   └── home        // home feature page
-        │	  ├── data-access
-        │	  │   └── settings    // service
+        ├── web                 // app-specific
+        │   ├── feature         // use cases, smart components
+        │   │   ├── shell       // feature-shell to contain overall app routing
+        │   │   ├── layout      // main layout
+        │   │   └── home        // home feature page
+        │   ├── data-access
+        │   │   └── settings    // service
         │   ├── ui              // app specific dumb components, minimal
         ├── extension
         └── shared              // app-agnostic
-		        ├── feature         // shared smart components
-		        ├── data-access
-			      │   ├── feed
-			      │   └── persistence // layer over localstorage atm, + firetore (future)
-		        ├── ui
+            ├── feature         // shared smart components
+            ├── data-access
+            │   ├── feed
+            │   └── persistence // layer over localstorage atm, + firetore (future)
+            ├── ui
             │   ├── resizable layout
             │   └── list	    
             └── utils
