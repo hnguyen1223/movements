@@ -1,105 +1,86 @@
-
+  
+  
 
 # Movements
+This is a mono repo for a set of web app, extension and backend for a RSS reader.
 
-This project was generated using [Nx](https://nx.dev).
+Main components
+* Web app - Feed reader
+* Browser Extension - Visual tool to create custom mapping from list-like website to feed
+* Backend - load feed, scrap websites from custom mapping
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+## Demo
+work in progress - [movements.huynguyen.ca](https://movements.huynguyen.ca)
 
-🔎 **Smart, Fast and Extensible Build System**
+## Inspirations
+This is both a personal project that addresses some of my needs and a testing ground for Nx architecture with monorepo to solve some problems with more complex projects e.g. code duplication, circular dependencies, growing shared module and mental overhead to manage all of those.
 
-## Quick Start & Documentation
+## Some Considerations
+- monorepo to share code and enforce rules between different apps & backend.
+- SCAMs (single component Angular modules), with Angular 14 standalone components where applicable, to create more self contained and resusable components
+- No NgRx - I don't think state and data manipulation are complex enough to warrant a trade-off for NgRx
+- Micro Frontends (& module federation) - while super interesting, it's not big enough (few, not complex sub domains) to divide into multiple smaller apps
 
-[Nx Documentation](https://nx.dev/angular)
+## Project Structure
+```
+└── root
+	  ├── apps                    // bootsrapping, logics have been moved to libs
+    │   ├── web
+    │   ├── extension
+    │   ├── backend
+    └── libs
+	      ├── web                 // app-specific
+	      │	  ├── feature         // use cases, smart components
+        │	  │   ├── shell       // feature-shell to contain overall app routing
+        │	  │   ├── layout      // main layout
+        │	  │   └── home        // home feature page
+        │	  ├── data-access
+        │	  │   └── settings    // service
+        │   ├── ui              // app specific dumb components, minimal
+        ├── extension
+        └── shared              // app-agnostic
+		        ├── feature         // shared smart components
+		        ├── data-access
+			      │   ├── feed
+			      │   └── persistence // layer over localstorage atm, + firetore (future)
+		        ├── ui
+            │   ├── resizable layout
+            │   └── list	    
+            └── utils
+                └─── app config
+```
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+## Library Constraints (Dependencies)
+- Lib --x--> App
+- Lib (App 1) --x--> Lib (App 2)
+- Lib (Shared) --x--> Lib (App)
+- Lib (Util) only ----> Lib (Util)
+- Lib (UI) only ----> Lib (UI / Util)
+- Lib (Data) only ----> Lib (Data / Util)
+- No importing library if it's being lazy loaded
 
-[Interactive Tutorial](https://nx.dev/react-tutorial/01-create-application)
+## Progress
 
-## Adding capabilities to your workspace
+### Web App 
+- [x] Overall Structure
+- [x] Feed  - RSS
+- [x] Persistence - localstorage
+- [ ] Persistence - Firestore
+- [ ] Different feed fiew
+- [ ] Feed - Atom support
+- [ ] Error checking (feed format, url, etc.)
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### Backend
+- [x] Feed  - RSS
+- [ ] Error checking (feed format, url, etc.)
+- [ ] Feed - Atom
+- [ ] Feed - custom mapping (JSDOM)
+- [ ] Feed - custom mapping (puppeteer)
+- [ ] Custom NX plugin to support firebase functions in nx
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@movements/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+### Extension
+- [ ] Custom mapping creator
+- [ ] Feed view
+- [ ] Persistence - chrome.storage
+- [ ] Persistence - Firestore (manifest v3 problems)
+- [ ] Safari extension
