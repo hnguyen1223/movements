@@ -1,7 +1,7 @@
 import { Feed } from './feed.model';
 
-export const SAMPLE_FEEDS: Feed[] = [
-  {
+export const SAMPLE_FEEDS: { [key: string]: Feed } = {
+  'https://daringfireball.net/feeds/main': {
     id: 'https://daringfireball.net/feeds/main',
     title: 'Daring Fireball',
     description: 'By John Gruber',
@@ -12,7 +12,7 @@ export const SAMPLE_FEEDS: Feed[] = [
     items: [],
     isFavorite: true,
   },
-  {
+  'http://www.nasa.gov/rss/dyn/breaking_news.rss': {
     id: 'http://www.nasa.gov/rss/dyn/breaking_news.rss',
     title: 'NASA Breaking News',
     description:
@@ -24,7 +24,7 @@ export const SAMPLE_FEEDS: Feed[] = [
     items: [],
     isFavorite: true,
   },
-  {
+  'https://hnrss.org/frontpage': {
     id: 'https://hnrss.org/frontpage',
     title: 'Hacker News: Front Page',
     description: 'Hacker News RSS',
@@ -35,7 +35,7 @@ export const SAMPLE_FEEDS: Feed[] = [
     items: [],
     isFavorite: false,
   },
-  {
+  '/r/news/.rss': {
     id: '/r/news/.rss',
     title: 'News',
     description:
@@ -48,7 +48,7 @@ export const SAMPLE_FEEDS: Feed[] = [
     items: [],
     isFavorite: false,
   },
-  {
+  'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml': {
     id: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
     title: 'NYT &gt; Top Stories',
     description: '',
@@ -59,4 +59,4 @@ export const SAMPLE_FEEDS: Feed[] = [
     items: [],
     isFavorite: false,
   },
-];
+};

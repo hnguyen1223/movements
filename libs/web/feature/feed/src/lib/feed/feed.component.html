@@ -1,0 +1,9 @@
+<div class="main-container" *ngIf="feed$ | async as feed">
+  <movements-shared-ui-header-bar>
+    <h1 headerBarHeading [innerHtml]="feed.title"></h1>
+  </movements-shared-ui-header-bar>
+  <div class="scroll-container">
+    <movements-feed-item-list [items]="feed.items"></movements-feed-item-list>
+  </div>
+</div>
+<div class="side-container" *ngIf="0"></div>

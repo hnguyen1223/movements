@@ -6,10 +6,11 @@ export const webFeatureShellRoutes: Route[] = [
     path: '',
     component: LayoutComponent,
     children: [
+      { path: '', redirectTo: 'feed', pathMatch: 'full' },
       {
-        path: 'home',
+        path: 'feed',
         loadChildren: async () =>
-          (await import('@movements/web/feature/home')).WebFeatureHomeModule,
+          (await import('@movements/web/feature/feed')).WebFeatureFeedModule,
       },
     ],
   },

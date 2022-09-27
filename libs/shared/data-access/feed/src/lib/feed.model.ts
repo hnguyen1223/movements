@@ -1,7 +1,6 @@
 import { TrackByFunction } from '@angular/core';
 
 export interface Feed extends CommonDetail {
-  image: string;
   items: FeedItem[];
   isFavorite: boolean;
 }
@@ -20,6 +19,7 @@ export interface FeedItem extends CommonDetail {
 export interface CommonDetail {
   id: string;
   link: string;
+  image: string;
   title: string;
   description: string;
   publishedOn: string;

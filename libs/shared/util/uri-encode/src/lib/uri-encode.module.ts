@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UriEncodePipe } from './lib/uri-encode.pipe';
+import { UriEncodePipe } from './uri-encode.pipe';
 
 @NgModule({
   imports: [CommonModule],
