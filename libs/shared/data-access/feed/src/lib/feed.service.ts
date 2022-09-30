@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PersistenceService } from '@movements/shared/data-access/persistence';
-import { BehaviorSubject, from, map, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, from, map, Observable, of } from 'rxjs';
 import { Feed, FeedItem } from './feed.model';
 
 import { Functions, httpsCallable } from '@angular/fire/functions';
@@ -21,6 +21,10 @@ export class FeedService {
     this.persistenceService.setItem('feeds', this.feedSubject.getValue());
   }
 
+  /**
+   * Add a fully loaded feed
+   * @param feed fully loaded feed
+   */
   addFeed(feed: Feed) {
     this.feedSubject.next({
       ...this.feedSubject.getValue(),
@@ -29,29 +33,14 @@ export class FeedService {
         ...feed,
       },
     });
-    console.log(feed);
-    console.log(this.feedSubject.getValue());
+    this.persistenceService.setItem('feeds', this.feedSubject.getValue());
   }
   removeFeed(id: string) {}
 
   getFeed(id: string): Observable<Feed> {
     return this.feedSubject.asObservable().pipe(
       map((feeds) => {
-        if (id === 'all')
-          return {
-            id: 'All',
-            title: 'All',
-            description: 'By You <3',
-            publishedOn: '',
-            updatedOn: '',
-            link: '',
-            image: '',
-            items: Object.values(feeds).reduce(
-              (arr: FeedItem[], feed) => [...arr, ...feed.items],
-              []
-            ),
-            isFavorite: false,
-          };
+        if (id === 'all') return this.getFeedAll(Object.values(feeds));
         else if (feeds[id]) return feeds[id];
         else throw new Error('Feed Not Found');
       })
@@ -73,39 +62,75 @@ export class FeedService {
       );
   }
 
-  getFeedItems(id: string): Observable<FeedItem[]> {
-    return this.feedSubject.asObservable().pipe(
-      map((feeds) => {
-        if (feeds[id]) return feeds[id].items;
-        else throw new Error('Feed Not Found');
+  // getFeedItems(id: string): Observable<FeedItem[]> {
+  //   return this.feedSubject.asObservable().pipe(
+  //     map((feeds) => {
+  //       if (feeds[id]) return feeds[id].items;
+  //       else throw new Error('Feed Not Found');
+  //     })
+  //   );
+  //   // if (this.feedSubject.getValue().find((f) => f.id))
+  //   //   return this.feedSubject
+  //   //     .asObservable()
+  //   //     .pipe(map((feeds) => feeds.find((f) => f.id === id)!.items));
+  //   // throw new Error('Feed Not Found');
+  // }
+
+  /**
+   * Refresh existing feed by id
+   * @param id
+   */
+  refreshFeed(id: string) {
+    const feedUrls =
+      id === 'all'
+        ? Object.values(this.feedSubject.getValue()).map((feed) => feed.link)
+        : this.feedSubject.getValue()[id]
+        ? [this.feedSubject.getValue()[id].link]
+        : [];
+    feedUrls.forEach((url) =>
+      this.loadFeed(url).subscribe((feed) => {
+        if (feed) this.addFeed(feed);
       })
     );
-    // if (this.feedSubject.getValue().find((f) => f.id))
-    //   return this.feedSubject
-    //     .asObservable()
-    //     .pipe(map((feeds) => feeds.find((f) => f.id === id)!.items));
-    // throw new Error('Feed Not Found');
+    // if (id === 'all')
+    //   Object.values(this.feedSubject.getValue()).forEach((feed) =>
+    //     this.loadFeed(feed.link).subscribe((feed) => {
+    //       if (feed) this.addFeed(feed);
+    //     })
+    //   );
+    // else if (this.feedSubject.getValue()[id])
+    //   this.loadFeed(this.feedSubject.getValue()[id].link).subscribe((feed) =>
+    //     this.addFeed(feed)
+    //   );
+    // else throw new Error('Feed Not Found');
   }
 
-  refreshFeed(id: string) {
-    if (id === 'all')
-      Object.values(this.feedSubject.getValue()).forEach((feed) =>
-        this.loadFeed(feed.link).subscribe((feed) => this.addFeed(feed))
-      );
-    else
-      this.loadFeed(this.feedSubject.getValue()[id].link).subscribe((feed) =>
-        this.addFeed(feed)
-      );
-    // console.log('refresh');
-    // this.getFeed(id).pipe(switchMap((feed) => this.loadFeed(feed.id))),
-    //   tap((feed: Feed) => this.addFeed(feed)),
-    //   finalize(() => console.log('finally'));
-  }
-
-  loadFeed(link: string): Observable<Feed> {
+  /**
+   * Load feed from url
+   * @param link url to feed
+   * @returns
+   */
+  loadFeed(link: string): Observable<Feed | undefined> {
     return from(httpsCallable(this.fns, 'getFeed')({ link })).pipe(
-      // tap(console.log)
-      map((result) => (result.data as any).feed as Feed)
+      map((result) => (result.data as any).feed as Feed),
+      catchError((_) => of(undefined))
     );
+  }
+
+  private getFeedAll(feeds: Feed[]): Feed {
+    return {
+      id: 'All',
+      title: 'All',
+      description: 'By You <3',
+      publishedOn: '',
+      updatedOn: '',
+      link: '',
+      image: '',
+      items: Object.values(feeds).reduce(
+        (arr: FeedItem[], feed) => [...arr, ...feed.items],
+        []
+      ),
+      isFavorite: false,
+    };
   }
 }

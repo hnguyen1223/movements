@@ -1,0 +1,51 @@
+<ng-template #suffixIconButton>
+  <button nz-button nzType="primary" nzSearch>
+    <span nz-icon nzType="search"></span>
+  </button>
+</ng-template>
+<ng-template #inputClearTpl>
+  <span
+    nz-icon
+    class="ant-input-clear-icon"
+    nzTheme="fill"
+    nzType="close-circle"
+    *ngIf="url.value"
+    (click)="url.setValue('')"
+  ></span>
+</ng-template>
+
+<form nz-form>
+  <nz-form-item>
+    <nz-form-control
+      [nzValidateStatus]="url"
+      nzHasFeedback
+      [nzErrorTip]="url.errors?.['isNotUrl'] ? 'Must be a valid URL' : 'Cannot load feed from URL'"
+    >
+      <nz-input-group nzSearch [nzPrefix]="inputClearTpl">
+        <input
+          #urlInput
+          type="text"
+          nz-input
+          placeholder="Feed URL"
+          [formControl]="url"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<nz-card
+  nzHoverable
+  style="width: 100%; max-height: 240px"
+  [nzCover]="coverTemplate"
+  *ngIf="loadedFeed$ | async as loadedFeed"
+  (click)="addFeed(loadedFeed)"
+>
+  <nz-card-meta
+    [nzTitle]="loadedFeed.title"
+    [nzDescription]="loadedFeed.description"
+  ></nz-card-meta>
+  <ng-template #coverTemplate>
+    <img *ngIf="loadedFeed.image" alt="example" [src]="loadedFeed.image" />
+  </ng-template>
+</nz-card>

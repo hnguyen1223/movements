@@ -61,9 +61,11 @@ work in progress - [movements.huynguyen.ca](https://movements.huynguyen.ca)
 
 ### Web App 
 - [x] Overall Structure
-- [x] Feed  - RSS
+- [x] Feed - RSS
 - [x] Persistence - localstorage
 - [ ] Persistence - Firestore
+- [ ] Add / Remove feed
+- [ ] Folder organization
 - [ ] Different feed fiew
 - [x] Feed - Atom support
 - [ ] Error checking (feed format, url, etc.)

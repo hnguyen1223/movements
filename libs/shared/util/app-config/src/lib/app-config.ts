@@ -1,10 +1,5 @@
 import { InjectionToken, ValueProvider } from '@angular/core';
-
-export interface AppConfig {
-  production: boolean;
-  localStoragePrefix: string;
-  firebase: { [key: string]: string };
-}
+import { AppConfig } from './app-config.model';
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('App Config');
 

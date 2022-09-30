@@ -1,6 +1,19 @@
+<movements-shared-ui-header-bar>
+  <h2 headerBarHeading>Movements</h2>
+  <button
+    nz-button
+    nzType="text"
+    nzShape="circle"
+    nzSize="large"
+    headerBarControl
+    movementsFeedAdd
+  >
+    <span nz-icon nzType="plus"></span>
+  </button>
+</movements-shared-ui-header-bar>
 <ul nz-menu nzMode="inline">
-  <li nz-menu-item nzMatchRouter>
-    <a routerLink="feed/all">All</a>
+  <li nz-menu-item>
+    <a [routerLink]="['feed', 'all']">All</a>
   </li>
 
   <li nz-submenu nzTitle="Feeds" nzIcon="mail" nzOpen>
@@ -13,7 +26,7 @@
         <ul>
           <li nz-menu-item *ngFor="let feed of favorites; trackBy: trackByFn">
             <a
-              [routerLink]="['/', 'feed', feed.id | uriEncode]"
+              [routerLink]="['feed', feed.id | uriEncode]"
               [innerHtml]="feed.title"
             ></a>
           </li>
@@ -32,4 +45,3 @@
     </ul>
   </li>
 </ul>
-<movements-side-nav-bottom></movements-side-nav-bottom>

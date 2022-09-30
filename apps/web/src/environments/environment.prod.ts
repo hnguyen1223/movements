@@ -8,7 +8,7 @@ export const environment: AppConfig = {
     locationId: 'us-west2',
     apiKey: 'AIzaSyC2ZKZNV-ohqA48SmLAdYJuvbMmCWr-uW8',
     authDomain: 'movements-1223.firebaseapp.com',
-    messagingSenderId: '747905006296',
+    // messagingSenderId: '747905006296',
   },
   production: true,
   localStoragePrefix: 'MW',

@@ -36,13 +36,22 @@
       "@movements/shared/util/app-config": [
         "libs/shared/util/app-config/src/index.ts"
       ],
+      "@movements/shared/util/is-not-nullish": [
+        "libs/shared/util/is-not-nullish/src/index.ts"
+      ],
       "@movements/shared/util/uri-encode": [
         "libs/shared/util/uri-encode/src/index.ts"
+      ],
+      "@movements/shared/util/url-validator": [
+        "libs/shared/util/url-validator/src/index.ts"
       ],
       "@movements/web/data-access/settings": [
         "libs/web/data-access/settings/src/index.ts"
       ],
       "@movements/web/feature/feed": ["libs/web/feature/feed/src/index.ts"],
+      "@movements/web/feature/feed-add": [
+        "libs/web/feature/feed-add/src/index.ts"
+      ],
       "@movements/web/feature/home": ["libs/web/feature/home/src/index.ts"],
       "@movements/web/feature/layout": ["libs/web/feature/layout/src/index.ts"],
       "@movements/web/feature/shell": ["libs/web/feature/shell/src/index.ts"]
