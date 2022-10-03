@@ -5,9 +5,13 @@
 This is a mono repo for a set of web app, extension and backend for a RSS reader.
 
 Main components
-* Web app - Feed reader
-* Browser Extension - Visual tool to create custom mapping from list-like website to feed
-* Backend - load feed, scrap websites from custom mapping
+- Web app
+    - Feed reader: Angular SPA that wraps a shared feed-reader feature libary
+- Extension
+    - Options page: Feed reader (shared feature library)
+    - Response header modification for CORS: static rules through `declarativeNetRequest` permission
+    - Content script: Custom mapping creator
+- Cors-proxy: proxy web app requests if browser extension is not installed
 
 ## Inspirations
 This is both a personal project that addresses some of my needs and a testing ground for Nx architecture with monorepo to solve some problems with more complex projects e.g. code duplication, circular dependencies, growing shared module and mental overhead to manage all of those.
@@ -24,27 +28,31 @@ This is both a personal project that addresses some of my needs and a testing gr
     ├── apps                    // bootsrapping, logics have been moved to libs
     │   ├── web
     │   ├── extension
-    │   ├── backend
+    │   ├── cors-proxy
     └── libs
-        ├── web                 // app-specific
-        │   ├── feature         // use cases, smart components
-        │   │   ├── shell       // feature-shell to contain overall app routing
-        │   │   ├── layout      // main layout
-        │   │   └── home        // home feature page
-        │   ├── data-access
-        │   │   └── settings    // service
-        │   ├── ui              // app specific dumb components, minimal
-        ├── extension
+        ├── web             
+        │   └── shell           // shell to contain overall app routing
+        ├── extension             
+        │   └── shell           // shell to contain overall app routing (options page)
         └── shared              // app-agnostic
-            ├── feature         // shared smart components
+            ├── feed-reader     // shared feed reader
+            │   │   ├── feed
+            │   │   ├── feed-add
+            │   │   ├── feed-item-list
+            │   │   └── layout
             ├── data-access
             │   ├── feed
-            │   └── persistence // layer over localstorage atm, + firetore (future)
-            ├── ui
+            │   ├── persistence // layer over localstorage atm, + firetore (future)
+            │   └── settings    // layer over persistence, customizable per app (future)
+            ├── ui              // share dumb ui components
             │   ├── resizable layout
-            │   └── list	    
+            │   ├── header-bar
+            │   └── line-clamp	    
             └── utils
-                └─── app config
+                ├─── app config
+                ├─── is-not-nullish
+                ├─── uri-encode
+                └─── url-validator
 ```
 
 ## Library Constraints (Dependencies)
@@ -64,7 +72,8 @@ work in progress - [movements.huynguyen.ca](https://movements.huynguyen.ca)
 - [x] Feed - RSS
 - [x] Persistence - localstorage
 - [ ] Persistence - Firestore
-- [ ] Add / Remove feed
+- [x] Add feed
+- [x] Remove feed
 - [ ] Folder organization
 - [ ] Different feed fiew
 - [x] Feed - Atom support
@@ -80,7 +89,7 @@ work in progress - [movements.huynguyen.ca](https://movements.huynguyen.ca)
 
 ### Extension
 - [ ] Custom mapping creator
-- [ ] Feed view
-- [ ] Persistence - chrome.storage
+- [x] Feed view
+- [x] Persistence - chrome.storage
 - [ ] Persistence - Firestore (manifest v3 problems)
 - [ ] Safari extension
