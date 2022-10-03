@@ -1,0 +1,14 @@
+{
+  "name": "cors-proxy",
+  "description": "Simple CORS Proxy",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Huy nguyen",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

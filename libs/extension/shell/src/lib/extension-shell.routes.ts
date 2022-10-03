@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { LayoutComponent } from '@movements/shared-feed-reader-layout';
 
-export const webFeatureShellRoutes: Route[] = [
+export const extensionShellRoutes: Route[] = [
   {
     path: '',
     component: LayoutComponent,

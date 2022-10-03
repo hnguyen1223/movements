@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@movements/extension/shell": ["libs/extension/shell/src/index.ts"],
       "@movements/shared-data-access-settings": [
         "libs/shared/data-access/settings/src/index.ts"
       ],
@@ -57,7 +58,7 @@
       "@movements/shared/util/url-validator": [
         "libs/shared/util/url-validator/src/index.ts"
       ],
-      "@movements/web/feature/shell": ["libs/web/feature/shell/src/index.ts"]
+      "@movements/web-shell": ["libs/web/shell/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { WebFeatureShellModule } from '@movements/web/feature/shell';
+import { WebShellModule } from '@movements/web-shell';
 import { getAppConfigProvider } from '@movements/shared/util/app-config';
 
 import { environment } from '../environments/environment';
@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    WebFeatureShellModule,
+    WebShellModule,
     ...(environment.firebase
       ? [
           provideFirebaseApp(() => initializeApp(environment.firebase as any)),

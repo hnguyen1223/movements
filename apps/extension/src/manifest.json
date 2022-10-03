@@ -2,7 +2,8 @@
   "name": "Movements Extension",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "activeTab", "declarativeNetRequest"],
+  "host_permissions": ["*://*/*"],
   "action": {
     "default_popup": "popup.html"
   },
@@ -16,5 +17,14 @@
       "matches": ["https://*/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { WebFeatureShellModule } from '@movements/web/feature/shell';
+import { ExtensionShellModule } from '@movements/extension/shell';
 import { getAppConfigProvider } from '@movements/shared/util/app-config';
 
 import { environment } from '../environments/environment';
@@ -15,14 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    WebFeatureShellModule,
+    ExtensionShellModule,
     ...(environment.firebase
       ? [
           provideFirebaseApp(() => initializeApp(environment.firebase as any)),
           provideFunctions(() => getFunctions()),
         ]
       : []),
-      HttpClientModule
+    HttpClientModule,
   ],
   providers: [getAppConfigProvider(environment)],
   bootstrap: [AppComponent],

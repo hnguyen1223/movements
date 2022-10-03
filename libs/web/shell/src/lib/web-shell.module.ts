@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(en);
 import { RouterModule } from '@angular/router';
-import { webFeatureShellRoutes } from './web-feature-shell.routes';
+import { webShellRoutes } from './web-shell.routes';
 import { SharedFeedReaderLayoutModule } from '@movements/shared-feed-reader-layout';
 
 @NgModule({
@@ -19,10 +19,10 @@ import { SharedFeedReaderLayoutModule } from '@movements/shared-feed-reader-layo
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(webFeatureShellRoutes),
+    RouterModule.forRoot(webShellRoutes),
     SharedFeedReaderLayoutModule,
   ],
   exports: [RouterModule],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 })
-export class WebFeatureShellModule {}
+export class WebShellModule {}

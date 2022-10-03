@@ -1,15 +1,14 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/web/feature/shell/src",
+  "sourceRoot": "libs/extension/shell/src",
   "prefix": "movements",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/web/feature/shell"
-      ],
+      "outputs": ["coverage/libs/extension/shell"],
       "options": {
-        "jestConfig": "libs/web/feature/shell/jest.config.ts",
+        "jestConfig": "libs/extension/shell/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -17,8 +16,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/web/feature/shell/**/*.ts",
-          "libs/web/feature/shell/**/*.html"
+          "libs/extension/shell/**/*.ts",
+          "libs/extension/shell/**/*.html"
         ]
       }
     }

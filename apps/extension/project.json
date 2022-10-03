@@ -20,6 +20,7 @@
           "apps/extension/src/favicon.ico",
           "apps/extension/src/assets",
           "apps/extension/src/manifest.json",
+          "apps/extension/src/rules.json",
           "apps/extension/src/popup.html",
           {
             "glob": "**/*",

@@ -2,8 +2,10 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "cors-proxy": "apps/cors-proxy",
     "extension": "apps/extension",
     "extension-e2e": "apps/extension-e2e",
+    "extension-shell": "libs/extension/shell",
     "shared-data-access-feed": "libs/shared/data-access/feed",
     "shared-data-access-persistence": "libs/shared/data-access/persistence",
     "shared-data-access-settings": "libs/shared/data-access/settings",
@@ -20,6 +22,6 @@
     "shared-util-url-validator": "libs/shared/util/url-validator",
     "web": "apps/web",
     "web-e2e": "apps/web-e2e",
-    "web-feature-shell": "libs/web/feature/shell"
+    "web-shell": "libs/web/shell"
   }
 }
