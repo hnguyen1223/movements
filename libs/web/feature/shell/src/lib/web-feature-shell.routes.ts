@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { LayoutComponent } from '@movements/web/feature/layout';
+import { LayoutComponent } from '@movements/shared-feed-reader-layout';
 
 export const webFeatureShellRoutes: Route[] = [
   {
@@ -10,7 +10,8 @@ export const webFeatureShellRoutes: Route[] = [
       {
         path: 'feed',
         loadChildren: async () =>
-          (await import('@movements/web/feature/feed')).WebFeatureFeedModule,
+          (await import('@movements/shared-feed-reader-feed'))
+            .SharedFeedReaderFeedModule,
       },
     ],
   },

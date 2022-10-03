@@ -6,7 +6,11 @@
     "extension-e2e": "apps/extension-e2e",
     "shared-data-access-feed": "libs/shared/data-access/feed",
     "shared-data-access-persistence": "libs/shared/data-access/persistence",
+    "shared-data-access-settings": "libs/shared/data-access/settings",
     "shared-feature-feed-item-list": "libs/shared/feature/feed-item-list",
+    "shared-feed-reader-feed": "libs/shared/feed-reader/feed",
+    "shared-feed-reader-feed-add": "libs/shared/feed-reader/feed-add",
+    "shared-feed-reader-layout": "libs/shared/feed-reader/layout",
     "shared-ui-header-bar": "libs/shared/ui/header-bar",
     "shared-ui-line-clamp": "libs/shared/ui/line-clamp",
     "shared-ui-resizable-layout": "libs/shared/ui/resizable-layout",
@@ -15,12 +19,7 @@
     "shared-util-uri-encode": "libs/shared/util/uri-encode",
     "shared-util-url-validator": "libs/shared/util/url-validator",
     "web": "apps/web",
-    "web-data-access-settings": "libs/web/data-access/settings",
     "web-e2e": "apps/web-e2e",
-    "web-feature-feed": "libs/web/feature/feed",
-    "web-feature-feed-add": "libs/web/feature/feed-add",
-    "web-feature-home": "libs/web/feature/home",
-    "web-feature-layout": "libs/web/feature/layout",
     "web-feature-shell": "libs/web/feature/shell"
   }
 }
