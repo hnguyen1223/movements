@@ -1,13 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { WebFeatureShellModule } from '@movements/web/feature/shell';
+import { getAppConfigProvider } from '@movements/shared/util/app-config';
+
+import { environment } from '../environments/environment';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { HttpClientModule } from '@angular/common/http';
+// import { isNotNullish } from '@movements/shared/util/is-not-nullish';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule],
-  providers: [],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    WebFeatureShellModule,
+    ...(environment.firebase
+      ? [
+          provideFirebaseApp(() => initializeApp(environment.firebase as any)),
+          provideFunctions(() => getFunctions()),
+        ]
+      : []),
+      HttpClientModule
+  ],
+  providers: [getAppConfigProvider(environment)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

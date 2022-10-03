@@ -4,11 +4,12 @@
   "prefix": "movements",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
       "options": {
+        "customWebpackConfig": {
+          "path": "apps/extension/webpack.config.ts"
+        },
         "outputPath": "dist/apps/extension",
         "index": "apps/extension/src/index.html",
         "main": "apps/extension/src/main.ts",
@@ -18,10 +19,17 @@
         "assets": [
           "apps/extension/src/favicon.ico",
           "apps/extension/src/assets",
-          "apps/extension/src/manifest.json"
+          "apps/extension/src/manifest.json",
+          "apps/extension/src/popup.html",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
+          }
         ],
         "styles": [
-          "apps/extension/src/styles.scss"
+          "apps/extension/src/styles.scss",
+          "apps/extension/src/theme.less"
         ],
         "scripts": []
       },
@@ -31,7 +39,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",
@@ -45,7 +53,12 @@
               "with": "apps/extension/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "none",
+          "optimization": {
+            "styles": {
+              "inlineCritical": false
+            }
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -87,9 +100,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/extension"
-      ],
+      "outputs": ["coverage/apps/extension"],
       "options": {
         "jestConfig": "apps/extension/jest.config.ts",
         "passWithNoTests": true

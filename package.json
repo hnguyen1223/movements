@@ -42,6 +42,7 @@
     "@nrwl/jest": "14.7.13",
     "@nrwl/linter": "14.7.13",
     "@nrwl/workspace": "14.7.13",
+    "@types/chrome": "^0.0.197",
     "@types/jest": "28.1.8",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.33.1",

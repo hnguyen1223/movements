@@ -12,4 +12,5 @@ export const environment: AppConfig = {
   },
   production: true,
   localStoragePrefix: 'MW',
+  isWebApp: true,
 };

@@ -8,14 +8,19 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 
 import { AppComponent } from './app.component';
+// import { isNotNullish } from '@movements/shared/util/is-not-nullish';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     WebFeatureShellModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFunctions(() => getFunctions()),
+    ...(environment.firebase
+      ? [
+          provideFirebaseApp(() => initializeApp(environment.firebase as any)),
+          provideFunctions(() => getFunctions()),
+        ]
+      : []),
   ],
   providers: [getAppConfigProvider(environment)],
   bootstrap: [AppComponent],

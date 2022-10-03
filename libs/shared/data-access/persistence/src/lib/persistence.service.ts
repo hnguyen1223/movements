@@ -6,8 +6,10 @@ import { AppConfig, APP_CONFIG } from '@movements/shared/util/app-config';
 })
 export class PersistenceService {
   prefix = '';
+  storage: Storage  | chrome.storage.StorageArea;
   constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
     this.prefix = appConfig.localStoragePrefix + '_';
+    this.storage = appConfig.isWebApp ? localStorage : chrome.storage.local;
   }
 
   setItem(key: string, value: any) {

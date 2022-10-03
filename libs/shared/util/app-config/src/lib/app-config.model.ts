@@ -1,5 +1,6 @@
 export interface AppConfig {
   production: boolean;
   localStoragePrefix: string;
-  firebase: { [key: string]: string };
+  isWebApp: boolean;
+  firebase?: { [key: string]: string };
 }

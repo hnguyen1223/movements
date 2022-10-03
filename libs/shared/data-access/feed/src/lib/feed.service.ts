@@ -5,6 +5,7 @@ import { Feed, FeedItem } from './feed.model';
 
 import { Functions, httpsCallable } from '@angular/fire/functions';
 import { SAMPLE_FEEDS } from './feed.sample';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,8 @@ export class FeedService {
   );
   constructor(
     private persistenceService: PersistenceService,
-    private fns: Functions
+    private fns: Functions,
+    private http: HttpClient
   ) {
     this.feedSubject.next(persistenceService.getItem('feeds') ?? SAMPLE_FEEDS);
     this.persistenceService.setItem('feeds', this.feedSubject.getValue());
