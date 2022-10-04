@@ -1,7 +1,13 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts"],
+  "include": [
+    "**/*.ts"
+  ],
   "compilerOptions": {
-    "types": ["jest", "node", "chrome"]
+    "types": [
+      "jest",
+      "node",
+      "chrome"
+    ]
   }
 }

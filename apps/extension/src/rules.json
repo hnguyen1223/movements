@@ -19,6 +19,7 @@
     },
     "condition": {
       "urlFilter": "*",
+      "domains": ["localhost", "movements.huynguyen.ca"],
       "resourceTypes": ["xmlhttprequest"]
     }
   }

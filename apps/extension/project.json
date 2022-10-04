@@ -21,7 +21,7 @@
           "apps/extension/src/assets",
           "apps/extension/src/manifest.json",
           "apps/extension/src/rules.json",
-          "apps/extension/src/popup.html",
+          "apps/extension/src/pages/popup/popup.html",
           {
             "glob": "**/*",
             "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",

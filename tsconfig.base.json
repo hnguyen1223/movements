@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@movements/extension/mapping-creator": [
+        "libs/extension/mapping-creator/src/index.ts"
+      ],
       "@movements/extension/shell": ["libs/extension/shell/src/index.ts"],
       "@movements/shared-data-access-settings": [
         "libs/shared/data-access/settings/src/index.ts"

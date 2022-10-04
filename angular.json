@@ -5,6 +5,7 @@
     "cors-proxy": "apps/cors-proxy",
     "extension": "apps/extension",
     "extension-e2e": "apps/extension-e2e",
+    "extension-mapping-creator": "libs/extension/mapping-creator",
     "extension-shell": "libs/extension/shell",
     "shared-data-access-feed": "libs/shared/data-access/feed",
     "shared-data-access-persistence": "libs/shared/data-access/persistence",

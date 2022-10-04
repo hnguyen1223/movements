@@ -9,9 +9,10 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts",
-    "src/background.ts",
-    "src/content.ts",
-    "src/popup.ts"
+    "src/scripts/background.ts",
+    "src/scripts/content.ts",
+    "src/scripts/mappingCreator.ts",
+    "src/pages/popup/popup.ts"
   ],
   "include": [
     "src/**/*.d.ts"
